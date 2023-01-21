@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <body onload="makeActive('emp')">
+  <div th:insert="navbar"></div>
+  <div class='dvv'>
+    <label class='lahu' th:text='${"View date wise report of "+name}'></label>
+  </div>
+   <table class='ta'>
+    <tr>
+     <td class='pd'>
+      <form action='current-date-report' method="post">
+       <input type='hidden' th:value='${eid}' name='eid'>
+       <input type='hidden' th:value='${name}' name='name'>
+       <table class='cdta'>
+        <tr>
+         <td>Current date</td>
+         <td align="right"><button class='cdbt'>GO</button></td>
+        </tr>
+       </table>
+      </form>
+     </td>
+    </tr>
+    <tr>
+     <td class='pd'>
+      <form action='any-date-report' method="post">
+       <input type='hidden' th:value='${eid}' name='eid'>
+       <input type='hidden' th:value='${name}' name='name'>
+       <table class='cdta'>
+        <tr>
+         <td>Any date</td>
+         <td><input type='date' class='tb' th:max="${cdate}" name='date' required></td>
+         <td align="right"><button class='cdbt'>GO</button></td>
+        </tr>
+       </table>
+      </form>
+     </td>
+    </tr>
+    <tr>
+     <td class='pd'>
+      <form action="date-between-report" method="post">
+       <input type='hidden' th:value='${eid}' name='eid'>
+       <input type='hidden' th:value='${name}' name='name'>
+       <table class='cdta'>
+        <tr>
+         <td>Date between&nbsp;&nbsp;&nbsp;&nbsp;</td>
+         <td><input type='date' class='tb' id='date1' name="date1" th:max="${cdate}" required></td>
+         <td><input type='date' class='tb' id='date2' name="date2" th:max="${cdate}" required></td>
+         <td align="right"><button class='cdbt' onclick='return compareDate()'>GO</button></td>
+        </tr>
+       </table>
+      </form>
+     </td>
+    </tr>
+   </table>
+ </body>
+</html>

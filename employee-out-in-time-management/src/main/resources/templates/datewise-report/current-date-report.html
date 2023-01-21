@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <body onload="makeActive('date')">
+  <div th:insert="navbar"></div>
+ <div class='dvv'>
+     <label class='lahu'>Report of current date</label>
+  </div>
+  <div class='container'>
+   <div class='card col-md-12 mx-auto'>
+    <div class='card-body'>
+     <div class='dv' th:if="${list.empty}">
+        <h2 style='color:red'>No employee is out yet today</h2>
+     </div>
+     <div th:if="${!list.empty}" class='table scrollit'>
+     <table class='table table-hover'>
+      <thead>
+       <tr>
+        <th class='las'>S.No</th><th class='las'>Employee id</th>
+        <th class='las'>Out Time</th><th class='las'>In Time</th>
+        <th class='las'>Total Time</th><th class='las'>Date</th>
+       </tr>
+      </thead>
+      <tbody>
+        <tr th:each="emp:${list}">
+           <td class='las'>1</td>
+           <td>
+           	<a th:href='@{/employee-out-in/employee/details(eid=${emp.eid})}' th:text="${emp.eid}"></a>
+           </td>
+    	   <td th:text="${emp.outtime}"></td>
+    	   <td th:if="${emp.intime=='Not in yet'}" style='color:red' th:text="${emp.intime}"></td>
+    	   <td th:if="${emp.intime!='Not in yet'}" th:text="${emp.intime}"></td>
+    	   <td th:if="${emp.totaltime=='Not applicable'}" style='color:red' th:text="${emp.totaltime}"></td>
+    	   <td th:if="${emp.totaltime!='Not applicable'}" th:text="${emp.totaltime}"></td>
+    	   <td th:text="${emp.date}"></td>
+    	</tr>
+      </tbody>
+     </table>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class='dvv'>
+	 <button class='btr' onclick='history.back()'>Back</button>
+  </div>
+ </body>
+</html>

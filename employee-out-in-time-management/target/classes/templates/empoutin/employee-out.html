@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <body onload="makeActive('out')">
+  <div th:insert="navbar"></div>
+ <form action="save-outtime" method="post">
+  <div class='dv'>
+    <label class='lahu'>Save employee out time</label>
+  </div> 
+  <div class='dv'>
+   <select name="eid" id="eid" class='la'>
+     <option value="-1">Select Employee</option>
+     <option th:each="emp:${elist}" th:value="${emp.eid}" th:text="${emp.name+'('+emp.eid+')'}"></option>
+   </select>
+  </div>
+  <div class='dv'>
+   <button class='btn btn-primary' onclick="return checkEmployee()">Submit</button>
+  </div>
+ </form> 
+ </body>
+</html>

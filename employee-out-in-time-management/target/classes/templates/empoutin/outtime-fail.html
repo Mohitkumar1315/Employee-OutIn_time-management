@@ -1,0 +1,8 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <body onload="makeActive('out')">
+  <div th:insert="navbar"></div>
+  <div class='dv'>
+   <label class='la' style='color:red' th:text='${name+" is already out.Not in yet"}'></label>
+  </div>
+ </body>
+</html>

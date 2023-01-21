@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <body onload="makeActive('emp')">
+  <div th:insert="navbar"></div>
+ <form action="date" method="post">
+  <div class='dv'>
+    <label class='lahu'>View employee wise report</label>
+  </div> 
+  <div class='dv'>
+   <select name="eid" id="eid" class='la'>
+     <option value="-1">Select Employee</option>
+     <option th:each="emp:${elist}" th:value="${emp.eid}" th:text="${emp.name+'('+emp.eid+')'}"></option>
+   </select>
+  </div>
+  <div class='dv'>
+   <button class='btn btn-primary' onclick="return checkEmployee()">Submit</button>
+  </div>
+ </form> 
+ </body>
+</html>
